@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup: venv + deps",
+      "type": "shell",
+      "command": "python -m venv venv",
+      "windows": {
+        "command": "python -m venv venv"
+      },
+      "dependsOn": [
+        "Install: requirements"
+      ]
+    },
+    {
+      "label": "Install: requirements",
+      "type": "shell",
+      "command": "venv/bin/python -m pip install -r requirements.txt",
+      "windows": {
+        "command": "venv\\Scripts\\python.exe -m pip install -r requirements.txt"
+      }
+    },
+    {
+      "label": "Run: pipeline",
+      "type": "shell",
+      "command": "venv/bin/python src/etl_pipeline.py --refresh",
+      "windows": {
+        "command": "venv\\Scripts\\python.exe src/etl_pipeline.py --refresh"
+      }
+    },
+    {
+      "label": "Test: pytest",
+      "type": "shell",
+      "command": "venv/bin/python -m pytest tests/",
+      "windows": {
+        "command": "venv\\Scripts\\python.exe -m pytest tests/"
+      }
+    },
+    {
+      "label": "Freeze: requirements.txt",
+      "type": "shell",
+      "command": "venv/bin/python -m pip freeze > requirements.txt",
+      "windows": {
+        "command": "venv\\Scripts\\python.exe -m pip freeze > requirements.txt"
+      }
+    }
+  ]
+}

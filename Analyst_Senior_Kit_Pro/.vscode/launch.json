@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug: etl_pipeline",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/etl_pipeline.py",
+      "args": [
+        "--refresh"
+      ],
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "name": "Debug: pytest (file)",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": [
+        "-k",
+        "${fileBasenameNoExtension}"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}
